@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.leftbar {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 250px;
+    max-width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    background-color: rgb(16, 0, 41);
+    border-right: 3px solid rgb(7, 0, 19);
+    color: whitesmoke;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    align-items: center;
+}
+
+.leftbar h2 {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.leftbar hr {
+    margin-top: 0px;
+    width: 90%;
+    height: 8px;
+    background-color: white;
+    border-style: none;
+    border-radius: 10px;
+}
+
+.leftbar img {
+    text-align: center;
+    margin-top: 10px;
+    filter: invert(100%);
+    width: 30%;
+    height: auto;
+}
+
+.formularios {
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 10px;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    border-style: none;
+}
+
+.formularios button {
+    color: white;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(16, 0, 41);
+    border-style: none;
+    border-radius: 5px;
+}
+
+.formularios button:hover {
+    background-color: rgb(52, 49, 56);
+    cursor: pointer;
+}
+
+.resultados {
+    text-align: center;
+    margin-top: 10px;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    border-style: none;
+}
+
+
+.resultados button {
+    color: white;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(16, 0, 41);
+    border-style: none;
+    border-radius: 5px;
+}
+
+.resultados button:hover {
+    background-color: rgb(52, 49, 56);
+    cursor: pointer;
+}
+
+.cerrar {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    border-style: none;
+}
+
+.cerrar button {
+    color: white;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(16, 0, 41);
+    border-style: none;
+    border-radius: 5px;
+}
+
+.cerrar button:hover {
+    background-color: rgb(52, 49, 56);
+    cursor: pointer;
+}
+
+.desplegable {
+    display: none;
+}
+
+.contenido {
+    margin-left: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.presentacion {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.presentacion img{
+    margin-top: 20px;
+    width: 250px;
+    border-radius: 20px;
+}
+
+.presentacion p{
+    width: 100%;
+}
+
+/*Menu desplegable para pantallas de teléfono*/
+@media (max-width: 700px) {
+    .desplegable {
+        box-sizing: border-box;
+        display: flex;
+        position: fixed;
+        width: 40px;
+        height: 100vh;
+        background-color: rgb(16, 0, 41);
+        border-right: 3px solid rgb(7, 0, 19);
+        transition: margin-left 0.3s ease;
+    }
+
+    .desplegable button {
+        box-sizing: border-box;
+        color: white;
+        font-size: 30px;
+        background-color: rgb(16, 0, 41);
+        width: 100%;
+        margin-bottom: auto;
+        border-style: none;
+        transition: transform 0.3s ease;
+        border-radius: 5px;
+    }
+
+    .desplegable button:hover {
+        background-color: rgb(52, 49, 56);
+        cursor: pointer;
+    }
+    
+    .leftbar {
+        opacity: 0;
+        visibility: hidden;
+        margin-left: -250px; /* Oculta inicialmente hacia la izquierda */
+        transition: margin-left 0.5s ease, opacity 0.5s ease;
+    }
+
+    .invisible {
+        width: 40px;
+    }
+
+
+    .desplegable button.active {
+        transform: rotate(90deg);
+    }
+
+    .leftbar.active {
+        opacity: 1;
+        visibility: visible;
+        margin-left: 40px;
+    }
+
+    .contenido {
+        flex-grow: 1;
+        margin-left: 40px;
+    }
+}

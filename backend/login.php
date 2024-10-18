@@ -26,13 +26,13 @@ if (isset($_POST["name"]) && isset($_POST["pass"])) {
         if (password_verify($contraseña, $hash_almacenado)) {
             session_start();
             $_SESSION["usuario"] = $usuario;
-            header("Location: ../frontend/generador.php");
+            header("Location: ../frontend/menu.php");
             exit();
         } else {
-            echo "Usuario o contraseña incorrectos";
+            echo "<script>alert('Usuario o contraseña incorrectos!'); window.location.href = '../frontend/login.html';</script>";
         }
     } else {
-        echo "Usuario o contraseña incorrectos";
+        echo "<script>alert('Usuario o contraseña incorrectos!'); window.location.href = '../frontend/login.html';</script>";
     }
     $stmt->close();
 }
