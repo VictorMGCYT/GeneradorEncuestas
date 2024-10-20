@@ -171,13 +171,55 @@ body {
     width: 100%;
 }
 
+.agregarEncuesta {
+    display: block;
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    border-color: rgb(63, 63, 63);
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.agregarEncuesta:hover {
+    background-color: rgb(177, 177, 177);
+    cursor: pointer;
+}
+
+.agregarEncuesta span {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.agregarEncuesta p {
+    font-size: 20px;
+}
+
+.noEncuestas {
+    display: block;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid;
+    border-color: rgb(63, 63, 63);
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /*Menu desplegable para pantallas de teléfono*/
 @media (max-width: 700px) {
     .desplegable {
         box-sizing: border-box;
         display: flex;
         position: fixed;
-        width: 40px;
+        width: 80px;
         height: 100vh;
         background-color: rgb(16, 0, 41);
         border-right: 3px solid rgb(7, 0, 19);
@@ -189,7 +231,9 @@ body {
         color: white;
         font-size: 30px;
         background-color: rgb(16, 0, 41);
-        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
         margin-bottom: auto;
         border-style: none;
         transition: transform 0.3s ease;
@@ -209,7 +253,7 @@ body {
     }
 
     .invisible {
-        width: 40px;
+        width: 80px;
     }
 
 
@@ -220,11 +264,11 @@ body {
     .leftbar.active {
         opacity: 1;
         visibility: visible;
-        margin-left: 40px;
+        margin-left: 80px;
     }
 
     .contenido {
         flex-grow: 1;
-        margin-left: 40px;
+        margin-left: 80px;
     }
 }

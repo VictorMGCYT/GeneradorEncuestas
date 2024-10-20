@@ -12,7 +12,7 @@ if (isset($_POST["name"]) && isset($_POST["pass"])) {
     $contraseña = $_POST["pass"];
 
     // Usar sentencia preparada para evitar SQL Injection
-    $stmt = $conn->prepare("SELECT pass FROM users WHERE name = ?");
+    $stmt = $conn->prepare("SELECT id, pass FROM users WHERE name = ?"); // Selecciona el ID junto con la contraseña
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -26,6 +26,8 @@ if (isset($_POST["name"]) && isset($_POST["pass"])) {
         if (password_verify($contraseña, $hash_almacenado)) {
             session_start();
             $_SESSION["usuario"] = $usuario;
+            $_SESSION["usuario_id"] = $row['id']; // Almacena el ID del usuario
+
             header("Location: ../frontend/menu.php");
             exit();
         } else {

@@ -50,6 +50,7 @@ if (!isset($_SESSION["usuario"])) {
                 hoy mismo!
                 </p>
             </div>
+            
         </div>
     </section>
 

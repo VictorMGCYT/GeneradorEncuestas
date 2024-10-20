@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Destruir la sesión y eliminar todas las variables de sesión
 session_unset(); 
 session_destroy(); 
