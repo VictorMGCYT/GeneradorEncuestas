@@ -1,3 +1,14 @@
+
+<?php
+session_start(); // Iniciar la sesión
+
+// Verificar si el usuario ha iniciado sesión
+if (isset($_SESSION["usuario"])) {
+    header("Location: ../frontend/index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>

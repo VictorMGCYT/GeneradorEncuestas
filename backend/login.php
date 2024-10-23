@@ -1,6 +1,7 @@
 <?php
 // Conecta a la base de datos
-$conn = mysqli_connect("localhost", "root", "12345678", "crud_db");
+//$conn = mysqli_connect("localhost", "root", "12345678", "crud_db");
+include './config/conn.php';
 
 if (!$conn) {
     die("Error de conexión: " . mysqli_connect_error());
@@ -28,13 +29,13 @@ if (isset($_POST["name"]) && isset($_POST["pass"])) {
             $_SESSION["usuario"] = $usuario;
             $_SESSION["usuario_id"] = $row['id']; // Almacena el ID del usuario
 
-            header("Location: ../frontend/menu.php");
+            header("Location: ../frontend/index.php");
             exit();
         } else {
-            echo "<script>alert('Usuario o contraseña incorrectos!'); window.location.href = '../frontend/login.html';</script>";
+            echo "<script>alert('Usuario o contraseña incorrectos!'); window.location.href = '../frontend/login.php';</script>";
         }
     } else {
-        echo "<script>alert('Usuario o contraseña incorrectos!'); window.location.href = '../frontend/login.html';</script>";
+        echo "<script>alert('Usuario o contraseña incorrectos!'); window.location.href = '../frontend/login.php';</script>";
     }
     $stmt->close();
 }

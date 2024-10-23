@@ -1,6 +1,7 @@
 <?php
 // Conecta a la base de datos
-$conn = mysqli_connect("localhost", "root", "12345678", "crud_db");
+//$conn = mysqli_connect("localhost", "root", "12345678", "cru_db");
+include './config/conn.php';
 
 if (!$conn) {
     die("Error de conexión: " . mysqli_connect_error());
@@ -33,7 +34,7 @@ if (isset($_POST["name"]) && isset($_POST["pass"])) {
         $stmt->bind_param("ss", $usuario, $contraseña_hash);
         if ($stmt->execute()) {
             // Inserción exitosa
-            echo "<script>alert('Usuario registrado exitosamente.'); window.location.href = '../frontend/login.html';</script>";
+            echo "<script>alert('Usuario registrado exitosamente.'); window.location.href = '../frontend/login.php';</script>";
         } else {
             // Error al insertar
             echo "<script>alert('Error al registrar el usuario.'); window.history.back();</script>";

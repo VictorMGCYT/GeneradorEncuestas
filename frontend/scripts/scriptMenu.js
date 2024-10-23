@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "../backend/logout.php";
     });
 
-
-    
-    
 })
 
 document.getElementById('btnForm').addEventListener('click', function () {

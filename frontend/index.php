@@ -1,15 +1,24 @@
-
 <?php
 session_start(); // Iniciar la sesión
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["usuario"])) {
-    header("Location: ../frontend/login.html");
+    header("Location: ../frontend/login.php");
     exit();
 }
-?>
 
- 
+if(isset($_GET["valor"])){
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $token = '';
+    for ($i = 0; $i < 50; $i++) {
+        $token .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    echo "Tu token es: " . $token;
+    header("Location: /GeneradorEncuestas/frontend/generador.php/?token=".$token);
+    exit();    
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,6 +49,9 @@ if (!isset($_SESSION["usuario"])) {
         </div>
         
         <div class="contenido" id="contenido">
+            <form action="" method="get">
+                <input type="submit" name="valor">
+            </form>
             <div class="presentacion">
                 <img src="imagenes/logo-pagina.jpg" alt="">
                 <h1>Bienvenido al generador de formularios</h1>
