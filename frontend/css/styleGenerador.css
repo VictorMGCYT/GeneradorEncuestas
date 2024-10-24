@@ -239,3 +239,22 @@ body {
     border-color: #ccc;
     font-size: 17px;
 }
+
+@media (max-width: 700px) {
+    .questions {
+        width: 90%;
+    }
+
+    .encabezado {
+        width: 90%;
+    }
+
+    .btnAdd {
+        width: 90%;
+    }
+
+    .question {
+        width: 90%;
+    }
+
+}
