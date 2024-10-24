@@ -33,25 +33,57 @@ if(isset($_GET['token'])){
             border: 1px solid #ccc;
         }
     </style>
+    <link rel="stylesheet" href="../css/styleGenerador.css">
 </head>
 <body>
 
-<h2>Generador de Encuestas</h2>
+    <section id="bar">
+        <div class="menu small-menu">
+            <a href="../index.php">
+                <img class="icon-size" src="../iconos/form.svg" alt="">
+                <span style="">&nbsp;Inicio</span>
+            </a>
+        </div>
+        <div class="menu medium-menu">
+            <h1 id="updateTitulo">
+                Generador de Encuesta
+            </h1>
+        </div>
+        <div class="right">
+            <div class="menu small-menu">
+                <button>
+                <img class="icon-size2" src="../iconos/eye.svg" alt="">
+                <span class="tooltip">Vista previa</span>
+                </button>
+            </div>
+            <div class="menu small-menu">
+                <button>
+                <img class="icon-size2" src="../iconos/options.svg" alt="">
+                <span class="tooltip">Opciones</span>
+                </button>
+            </div>
+        </div>
+    </section>
 
-<form id="surveyForm" action="../../backend/resultado.php" method="POST">
-    <label for="surveyTitle">Título de la Encuesta:</label>
-    <input type="text" name="surveyTitle" id="surveyTitle" required><br><br>
 
-    <label for="surveyDescription">Descripción de la Encuesta:</label>
-    <textarea name="surveyDescription" id="surveyDescription" required></textarea><br><br>
+    <section class="sec2">
+        <form id="surveyForm" action="../../backend/resultado.php" method="POST">
+            <div class="encabezado">
+                <input placeholder="Título" type="text" name="surveyTitle" id="surveyTitle" class="surveyTitle" required><br><br>
+                <textarea placeholder="Descripción" name="surveyDescription" id="surveyDescription" class="surveyDescription" required></textarea><br><br>
+            </div>
+        
 
-    <h3>Preguntas:</h3>
-    <div id="questions"></div>
+            <div class="questions" id="questions">
 
-    <button type="button" onclick="addQuestion()">Agregar Pregunta</button><br><br>
+                <h3>Preguntas:</h3>
+                <button type="button" onclick="addQuestion()">Agregar Pregunta</button><br>
+                <button type="button" onclick="saveSurvey()">Guardar Encuesta</button>
+            </div>
 
-    <button type="button" onclick="saveSurvey()">Guardar Encuesta</button>
-</form>
+        </form>
+    </section>
+
 
 
 <script src="../scripts/scriptGenerarEncuesta.js"></script>
