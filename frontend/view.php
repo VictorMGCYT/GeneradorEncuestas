@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    header("Location: ../frontend/login.php");
-    exit();
-}
+
 
 // Verificar si se ha enviado el token
 if (!isset($_GET['token'])) {
@@ -50,42 +46,53 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Encuesta</title>
+    <link rel="stylesheet" href="css/styleVista.css">
 </head>
 <body>
-
-<h1><?php echo htmlspecialchars($encuesta['title']); ?></h1>
-<p><?php echo htmlspecialchars($encuesta['description']); ?></p>
-
-<form action="../backend/procesar_respuestas.php" method="POST">
-    <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
-    
-    <?php foreach ($encuesta['questions'] as $index => $question): ?>
-        <h3><?php echo htmlspecialchars($question['text']); ?></h3>
         
-        <?php if ($question['type'] === 'abierta'): ?>
-            <input type="text" name="respuestas[<?php echo $index; ?>]" placeholder="Tu respuesta">
-        
-        <?php elseif ($question['type'] === 'multiple'): ?>
-            <?php foreach ($question['options'] as $option): ?>
-                <label>
-                    <input type="radio" name="respuestas[<?php echo $index; ?>]" value="<?php echo htmlspecialchars($option); ?>">
-                    <?php echo htmlspecialchars($option); ?>
-                </label><br>
+    <section class="sec1">
+        <div class="encabezado">
+            <h1><?php echo htmlspecialchars($encuesta['title']); ?></h1>
+            <p><?php echo htmlspecialchars($encuesta['description']); ?></p>
+        </div>
+    </section>
+
+    <section class="sec2">
+    <div class="cuerpo">
+        <form action="../backend/procesar_respuestas.php" method="POST">
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
+            
+            <?php foreach ($encuesta['questions'] as $index => $question): ?>
+                <h3><?php echo htmlspecialchars($question['text']); ?></h3>
+                
+                <?php if ($question['type'] === 'abierta'): ?>
+                    <input class="abierta" type="text" name="respuestas[<?php echo $index; ?>]" placeholder="Tu respuesta">
+                
+                <?php elseif ($question['type'] === 'multiple'): ?>
+                    <?php foreach ($question['options'] as $option): ?>
+                        <label class="txtradioBtn">
+                            <input class="radioBtn" type="radio" name="respuestas[<?php echo $index; ?>]" value="<?php echo htmlspecialchars($option); ?>">
+                            <?php echo htmlspecialchars($option); ?>
+                        </label><br>
+                    <?php endforeach; ?>
+                
+                <?php elseif ($question['type'] === 'seleccion'): ?>
+                    <?php foreach ($question['options'] as $option): ?>
+                        <label class="txtCheckbox">
+                            <input class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
+                            <?php echo htmlspecialchars($option); ?>
+                        </label><br>
+                    <?php endforeach; ?>
+                
+                <?php endif; ?>
             <?php endforeach; ?>
-        
-        <?php elseif ($question['type'] === 'seleccion'): ?>
-            <?php foreach ($question['options'] as $option): ?>
-                <label>
-                    <input type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
-                    <?php echo htmlspecialchars($option); ?>
-                </label><br>
-            <?php endforeach; ?>
-        
-        <?php endif; ?>
-    <?php endforeach; ?>
+            <br>
+            <br>
+            <button class="btnEnviar" type="submit">Enviar Respuestas</button>
+        </form>
+    </div>
+    </section>
 
-    <button type="submit">Enviar Respuestas</button>
-</form>
 
 </body>
 </html>

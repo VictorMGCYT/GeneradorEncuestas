@@ -42,6 +42,8 @@ if(isset($_GET['token'])){
                 Generador de Encuesta
             </h1>
         </div>
+
+        <!-- 
         <div class="right">
             <div class="menu small-menu">
                 <button>
@@ -56,6 +58,7 @@ if(isset($_GET['token'])){
                 </button>
             </div>
         </div>
+        -->
     </section>
 
 
