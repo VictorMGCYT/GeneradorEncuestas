@@ -185,7 +185,18 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.agregarEncuesta:hover {
+
+.agregarEncuesta form {
+    width: 100%;  
+}
+
+.anchoBtn {
+    width: 100%;
+    border-style: none;
+    background-color: transparent;
+}
+
+.anchoBtn:hover {
     background-color: rgb(177, 177, 177);
     cursor: pointer;
 }

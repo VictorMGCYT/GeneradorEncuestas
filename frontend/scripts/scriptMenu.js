@@ -35,12 +35,16 @@ document.getElementById('btnForm').addEventListener('click', function () {
     //Se encarga de generar el botón de agregar perguntas
     let hijoCrear;
 
-    hijoCrear = document.createElement('div');
+    hijoCrear = document.createElement('form');
     hijoCrear.classList.add('agregarEncuesta');
+    hijoCrear.method = 'GET';
 
     hijoCrear.innerHTML = `
-        <span>+</span>
-        <p>Crear nueva encuesta</p>
+        <button class="anchoBtn" type="submit" name="valor">
+            <span>+</span>
+            <p>Crear nueva encuesta</p>
+        </button>
+        
     `;
 
     padre.appendChild(hijoCrear);   

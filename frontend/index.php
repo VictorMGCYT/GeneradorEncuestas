@@ -51,9 +51,6 @@ if (isset($_GET["valor"])) {
         </div>
 
         <div class="contenido" id="contenido">
-            <form action="" method="get">
-                <input type="submit" name="valor">
-            </form>
             <div class="presentacion">
                 <img src="imagenes/logo-pagina.jpg" alt="">
                 <h1>Bienvenido al generador de formularios</h1>
