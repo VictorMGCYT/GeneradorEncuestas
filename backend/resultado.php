@@ -64,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<h2>Estructura JSON de la Encuesta Guardada:</h2>";
     echo "<pre>" . $surveyJSON . "</pre>";
 
+    header("Location: ../frontend/index.php");
 } else {
     echo "<p>No se envió ninguna encuesta.</p>";
 }
