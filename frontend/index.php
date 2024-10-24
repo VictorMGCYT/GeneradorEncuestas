@@ -13,11 +13,9 @@ if (isset($_GET["valor"])) {
     for ($i = 0; $i < 50; $i++) {
         $token .= $characters[rand(0, strlen($characters) - 1)];
     }
-    echo "Tu token es: " . $token;
     header("Location: /GeneradorEncuestas/frontend/generador2.php/?token=" . $token);
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +59,6 @@ if (isset($_GET["valor"])) {
                     hoy mismo!
                 </p>
             </div>
-
         </div>
     </section>
 
