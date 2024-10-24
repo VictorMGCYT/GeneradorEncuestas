@@ -26,13 +26,6 @@ if(isset($_GET['token'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Encuestas</title>
-    <style>
-        .question {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
     <link rel="stylesheet" href="../css/styleGenerador.css">
 </head>
 <body>
@@ -77,6 +70,10 @@ if(isset($_GET['token'])){
             <div class="questions" id="questions">
 
                 <h3>Preguntas:</h3>
+
+            </div>
+
+            <div class="btnAdd">
                 <button type="button" onclick="addQuestion()">Agregar Pregunta</button><br>
                 <button type="button" onclick="saveSurvey()">Guardar Encuesta</button>
             </div>

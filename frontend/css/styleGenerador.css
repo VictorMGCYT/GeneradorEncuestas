@@ -155,7 +155,29 @@ body {
     margin-bottom: 30px;
 }
 
-.questions button{
+.btnAdd {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 60%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border-left: 10px solid;
+    border-left-color: #ffffff;
+    margin-bottom: 20px;
+
+    
+}
+
+.btnAdd button{
     width: 95%;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -164,13 +186,56 @@ body {
     border: 2px solid black;
     background-color: rgba(89, 24, 148, 0.737);
     color: white;
-    font-weight: 600;
-
-    
+    font-weight: 600;    
 }
 
-.questions button:hover{
+.btnAdd button:hover{
     background-color: rgba(88, 66, 109, 0.84);
     cursor: pointer;
     
+}
+
+/*estilos para las questions*/
+
+.question {
+    margin-right: auto;
+    width: 94%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.pregunta {
+    margin-bottom: 10px;
+}
+
+.pregunta input {
+    width: 95%;
+    height: 30px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #ccc;
+    font-size: 17px;
+}
+
+.tipoPregunta {
+    margin-bottom: 20px;
+}
+
+.tipoPregunta select {
+    height: 30px;
+    font-size: 17px;
+}
+
+.inOpcion {
+    width: 50%;
+    height: 30px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #ccc;
+    font-size: 17px;
 }
