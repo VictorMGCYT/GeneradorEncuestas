@@ -1,6 +1,6 @@
-CREATE DATABASE cru_db;
+CREATE DATABASE encuesta_bd;
 
-use cru_db
+use encuesta_bd;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,7 +14,9 @@ CREATE TABLE encuestas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT,
+    token VARCHAR(50) NOT NULL,
+    estructura TEXT,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE 
 );

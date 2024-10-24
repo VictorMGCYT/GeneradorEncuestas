@@ -1,3 +1,25 @@
+<?php
+session_start(); // Iniciar la sesión
+
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../frontend/login.php");
+    exit();
+}
+
+if(isset($_GET['token'])){
+    $validToken = $_GET['token'];
+    $tokenLen = strlen($validToken);
+    if($tokenLen > 50 || $tokenLen < 50){
+        echo '<script>alert("EL TOKEN ES DE 50. \n Tú tienes: '.$tokenLen.'"); </script>';
+    }else{
+        $_SESSION["token"] = $_GET['token'];
+    }
+}else{
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

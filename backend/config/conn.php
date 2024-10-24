@@ -3,7 +3,7 @@
 $servername = "localhost"; // Ejemplo: localhost
 $username = "root";   // Ejemplo: root
 $password = "12345678";  // Ejemplo: 
-$dbname = "cru_db"; // Ejemplo: my_database
+$dbname = "encuesta_bd"; // Ejemplo: my_database
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
