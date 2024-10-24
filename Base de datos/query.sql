@@ -20,3 +20,11 @@ CREATE TABLE encuestas (
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE 
 );
+
+CREATE TABLE respuestas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    respuesta TEXT,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    encuesta_id INT,
+    FOREIGN KEY (encuesta_id) REFERENCES encuestas(id) ON DELETE CASCADE 
+);
