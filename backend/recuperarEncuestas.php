@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 }
 
 $user_id = $_SESSION['usuario_id'];
-$sql = "SELECT id, token, estructura FROM encuestas WHERE user_id = ?";
+$sql = "SELECT id, token, estructura FROM encuestas WHERE user_id = ? ORDER BY fecha_creacion DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
