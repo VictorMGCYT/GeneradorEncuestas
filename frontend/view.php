@@ -63,35 +63,50 @@ if (json_last_error() !== JSON_ERROR_NONE) {
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
             
             <?php foreach ($encuesta['questions'] as $index => $question): ?>
-                <h3><?php echo htmlspecialchars($question['text']); ?></h3>
-                
-                <?php if ($question['type'] === 'abierta'): ?>
-                    <input class="abierta" type="text" name="respuestas[<?php echo $index; ?>]" placeholder="Tu respuesta">
-                
-                <?php elseif ($question['type'] === 'multiple'): ?>
-                    <?php foreach ($question['options'] as $option): ?>
-                        <label class="txtradioBtn">
-                            <input class="radioBtn" type="radio" name="respuestas[<?php echo $index; ?>]" value="<?php echo htmlspecialchars($option); ?>">
-                            <?php echo htmlspecialchars($option); ?>
-                        </label><br>
-                    <?php endforeach; ?>
-                
-                <?php elseif ($question['type'] === 'seleccion'): ?>
-                    <?php foreach ($question['options'] as $option): ?>
-                        <label class="txtCheckbox">
-                            <input class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
-                            <?php echo htmlspecialchars($option); ?>
-                        </label><br>
-                    <?php endforeach; ?>
-                
-                <?php endif; ?>
-            <?php endforeach; ?>
+    <h3><?php echo htmlspecialchars($question['text']); ?></h3>
+    
+    <?php if ($question['type'] === 'abierta'): ?>
+        <input class="abierta" type="text" name="respuestas[<?php echo $index; ?>]" placeholder="Tu respuesta">
+    
+    <?php elseif ($question['type'] === 'multiple'): ?>
+        <?php 
+        // Filtra las opciones vacías usando una función anónima
+        $filteredOptions = array_filter($question['options'], function($option) {
+            return trim($option) !== '';
+        });
+        foreach ($filteredOptions as $option): 
+        ?>
+            <label class="txtradioBtn">
+                <input class="radioBtn" type="radio" name="respuestas[<?php echo $index; ?>]" value="<?php echo htmlspecialchars($option); ?>">
+                <?php echo htmlspecialchars($option); ?>
+            </label><br>
+        <?php endforeach; ?>
+    
+    <?php elseif ($question['type'] === 'seleccion'): ?>
+        <?php 
+        // Filtra las opciones vacías usando una función anónima
+        $filteredOptions = array_filter($question['options'], function($option) {
+            return trim($option) !== '';
+        });
+        foreach ($filteredOptions as $option): 
+        ?>
+            <label class="txtCheckbox">
+                <input class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
+                <?php echo htmlspecialchars($option); ?>
+            </label><br>
+        <?php endforeach; ?>
+    
+    <?php endif; ?>
+<?php endforeach; ?>
+
             <br>
             <br>
             <button class="btnEnviar" type="submit">Enviar Respuestas</button>
         </form>
     </div>
     </section>
+
+    
 
 
 </body>

@@ -40,8 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt->execute()) {
         echo "Respuestas guardadas con éxito.";
         echo "Se reenviará a la pantalla de inicio";
-        echo "<script> alert('Ir a home'); </script>";
-        header("Location: ../frontend/index.php");
+        echo "<script>
+            alert('respuestas enviadas correctamente');
+            window.location.href = '../frontend/gracias.php';
+          </script>";
     } else {
         echo "Error al guardar las respuestas: " . $stmt->error;
     }

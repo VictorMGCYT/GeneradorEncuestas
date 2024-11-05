@@ -65,7 +65,7 @@ if(isset($_GET['token'])){
     <section class="sec2">
         <form id="surveyForm" action="../../backend/resultado.php" method="POST">
             <div class="encabezado">
-                <input placeholder="Título" type="text" name="surveyTitle" id="surveyTitle" class="surveyTitle" required><br><br>
+                <input maxlength="255" placeholder="Título" type="text" name="surveyTitle" id="surveyTitle" class="surveyTitle" required><br><br>
                 <textarea placeholder="Descripción" name="surveyDescription" id="surveyDescription" class="surveyDescription" required></textarea><br><br>
             </div>
         
