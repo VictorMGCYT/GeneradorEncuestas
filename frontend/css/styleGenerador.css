@@ -83,7 +83,7 @@ body {
 
 .sec2 {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: column;
     width: 100%;
     height: 70vh;
