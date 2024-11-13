@@ -34,7 +34,7 @@ if(isset($_GET['token'])){
         <div class="menu small-menu">
             <a href="../index.php">
                 <img class="icon-size" src="../iconos/form.svg" alt="">
-                <span style="">&nbsp;Inicio</span>
+                <span>Inicio</span>
             </a>
         </div>
         <div class="menu medium-menu">

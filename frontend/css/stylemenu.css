@@ -176,12 +176,12 @@ body {
 .agregarEncuesta {
     display: block;
     box-sizing: border-box;
-    margin-top: 30px;
+    width: 300px;
+    margin-top: 10px;
     margin-bottom: 30px;
-    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid;
+    border-style: none;
     border-color: rgb(63, 63, 63);
     border-radius: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -194,12 +194,16 @@ body {
 
 .anchoBtn {
     width: 100%;
+    height: 100%;
     border-style: none;
-    background-color: transparent;
+    background-color: #ffc107;
+    border: 2px solid #ad8304;
+    border-radius: 10px;
+    color: black;
 }
 
 .anchoBtn:hover {
-    background-color: rgb(177, 177, 177);
+    background-color: #8e6b02;
     cursor: pointer;
 }
 
@@ -212,22 +216,34 @@ body {
     font-size: 20px;
 }
 
+
+/* todo Agregar estilos a las tarjetas de las encuestas */
 .noEncuestas {
     display: block;
     box-sizing: border-box;
     margin-top: 0px;
+    margin-top: 10px;
     margin-bottom: 30px;
-    width: 80%;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid;
-    border-color: rgb(63, 63, 63);
+    border: 2px solid #007bff;
     border-radius: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: 212529;
+    max-height: 300px;
+}
+
+.noEncuestas:hover {
+    background-color: #8a8a8a;
+    cursor: pointer;
 }
 
 .noEncuestas h2{
     width: 70%;
+    color: #000000;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     white-space: nowrap; /* Evita que el texto haga un salto de línea */
@@ -239,12 +255,16 @@ body {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    
     overflow: hidden; /* Oculta el texto que excede el contenedor */
     text-overflow: ellipsis; /* Añade los puntos suspensivos */
+    display: -webkit-box; /* Activa el modelo de caja flexible */
+    -webkit-box-orient: vertical; /* Define la orientación del contenedor como vertical */
+    -webkit-line-clamp: 5;
+    
 }
 
 
+/* todo Agregar estilos al botón de borrar encuestas */
 .deleteEncuesta {
     float: right;
     margin: 5px 5px; 
@@ -256,6 +276,72 @@ body {
 
 .deleteEncuesta:hover {
     cursor: pointer;
+    background-color: #771d19; 
+}
+
+/* todo Agregar estilos a las tarjetas de las encuestas en la parte de respuestas */
+
+.respEncuestas {
+    display: block;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: 212529;
+    max-height: 300px;
+}
+
+.respEncuestas h2{
+    width: 70%;
+    color: #000000;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: nowrap; /* Evita que el texto haga un salto de línea */
+    overflow: hidden; /* Oculta el texto que excede el contenedor */
+    text-overflow: ellipsis; /* Añade los puntos suspensivos */
+}
+
+.respEncuestas p{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Oculta el texto que excede el contenedor */
+    text-overflow: ellipsis; /* Añade los puntos suspensivos */
+    display: -webkit-box; /* Activa el modelo de caja flexible */
+    -webkit-box-orient: vertical; /* Define la orientación del contenedor como vertical */
+    -webkit-line-clamp: 5;
+    
+}
+
+.resContainer {
+    display: block;
+    box-sizing: border-box;
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: none;
+    background-color: #D0342c;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-content: center;
+    align-items: center;
+}
+
+.resContainer p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: white;
 }
 
 
