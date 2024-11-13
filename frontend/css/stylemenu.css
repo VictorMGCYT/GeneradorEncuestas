@@ -226,6 +226,39 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.noEncuestas h2{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: nowrap; /* Evita que el texto haga un salto de línea */
+    overflow: hidden; /* Oculta el texto que excede el contenedor */
+    text-overflow: ellipsis; /* Añade los puntos suspensivos */
+}
+
+.noEncuestas p{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    overflow: hidden; /* Oculta el texto que excede el contenedor */
+    text-overflow: ellipsis; /* Añade los puntos suspensivos */
+}
+
+
+.deleteEncuesta {
+    float: right;
+    margin: 5px 5px; 
+    border-style: none;
+    border-radius: 3px;
+    background-color: #D0342c;  
+    padding: 5px; 
+}
+
+.deleteEncuesta:hover {
+    cursor: pointer;
+}
+
+
 /*Menu desplegable para pantallas de teléfono*/
 @media (max-width: 700px) {
     .desplegable {

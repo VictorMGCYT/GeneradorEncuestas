@@ -10,7 +10,7 @@ function addQuestion() {
     questionDiv.innerHTML = `
         <div class="pregunta">
         <label for="question_${questionCount}_text">Pregunta ${questionCount}:</label>
-        <input placeholder="Ingresa tu pregunta" type="text" name="questions[${questionCount}][text]" id="question_${questionCount}_text" required><br>
+        <input maxlength="200" placeholder="Ingresa tu pregunta" type="text" name="questions[${questionCount}][text]" id="question_${questionCount}_text" required><br>
         </div>
 
         <div class="tipoPregunta">
@@ -39,7 +39,7 @@ function updateQuestionType(questionId) {
         for (let i = 1; i <= 5; i++) {
             optionsDiv.innerHTML += `
                 <label for="question_${questionId}_option_${i}">Opción ${i}:</label>
-                <input class="inOpcion" type="text" name="questions[${questionId}][options][${i}]" id="question_${questionId}_option_${i}" placeholder="Opción ${i}" ><br>
+                <input maxlength="50" class="inOpcion" type="text" name="questions[${questionId}][options][${i}]" id="question_${questionId}_option_${i}" placeholder="Opción ${i}" ><br>
             `;
         }
     }

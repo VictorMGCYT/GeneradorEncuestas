@@ -61,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 
     // Mostrar la estructura JSON de la encuesta debajo del formulario
-    echo "<h2>Estructura JSON de la Encuesta Guardada:</h2>";
-    echo "<pre>" . $surveyJSON . "</pre>";
+    //echo "<h2>Estructura JSON de la Encuesta Guardada:</h2>";
+    //echo "<pre>" . $surveyJSON . "</pre>";
 
     header("Location: ../frontend/index.php");
 } else {

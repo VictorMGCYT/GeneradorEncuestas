@@ -1,3 +1,4 @@
+-- Active: 1730129262205@@127.0.0.1@3306@encuesta_bd
 CREATE DATABASE encuesta_bd;
 
 use encuesta_bd;
@@ -28,3 +29,6 @@ CREATE TABLE respuestas (
     encuesta_id INT,
     FOREIGN KEY (encuesta_id) REFERENCES encuestas(id) ON DELETE CASCADE 
 );
+
+ALTER TABLE encuestas
+MODIFY estructura MEDIUMTEXT;
