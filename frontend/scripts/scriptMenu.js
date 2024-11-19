@@ -63,6 +63,7 @@ document.getElementById('btnForm').addEventListener('click', function () {
                 let noEncuestas = document.createElement('div');
                 noEncuestas.classList.add('noEncuestas');
                 noEncuestas.id = `encuesta-${encuesta.id}`;
+                noEncuestas.setAttribute('data-id', encuesta.id);
                 noEncuestas.dataset.token = encuesta.token; // Asignar el token de la encuesta
                 noEncuestas.innerHTML = `
                     <button name="${encuesta.id}" id="delete${encuesta.id}" class="deleteEncuesta">
@@ -102,6 +103,7 @@ document.getElementById('btnForm').addEventListener('click', function () {
                 let noEncuestas = document.createElement('div');
                 noEncuestas.classList.add('noEncuestas');
                 noEncuestas.id = `encuesta-${encuesta.id}`;
+                noEncuestas.setAttribute('data-id', encuesta.id);
                 noEncuestas.dataset.token = encuesta.token; // Asignar el token de la encuesta
                 noEncuestas.innerHTML = `
                     <button name="${encuesta.id}" id="delete${encuesta.id}" class="deleteEncuesta">
@@ -127,7 +129,7 @@ document.getElementById('contenido').addEventListener('click', function (event) 
         const encuestaId = clickedButton.name; // ID de la encuesta
     
         // Confirmar antes de eliminar
-        if (confirm(`¿Estás seguro de que deseas eliminar la encuesta ${encuestaId}?`)) {
+        if (confirm(`¿Estás seguro de que deseas eliminar la encuesta ${encuestaId}? Esto eliminará todo lo relacionado con la encuesta, incluyendo las respuestas`)) {
             // Enviar petición para eliminar la encuesta
             fetch('../backend/borrarEncuesta.php', {
             method: 'POST',
@@ -189,7 +191,8 @@ document.getElementById('btnResult').addEventListener('click', function () {
             encuestas.forEach((encuesta) => {
                 let noEncuestas = document.createElement('div');
                 noEncuestas.classList.add('respEncuestas');
-                noEncuestas.id = `resEncuesta-${encuesta.id}`;
+                noEncuestas.id = `resEncuesta-${encuesta.id}`;            
+                noEncuestas.setAttribute('data-id', encuesta.id);
                 noEncuestas.dataset.token = encuesta.token; // Asignar el token de la encuesta
                 noEncuestas.innerHTML = `
                     <h2>${encuesta.titulo}</h2>
@@ -226,6 +229,7 @@ document.getElementById('btnResult').addEventListener('click', function () {
                 let noEncuestas = document.createElement('div');
                 noEncuestas.classList.add('respEncuestas');
                 noEncuestas.id = `resEncuesta-${encuesta.id}`;
+                noEncuestas.setAttribute('data-id', encuesta.id);
                 noEncuestas.dataset.token = encuesta.token; // Asignar el token de la encuesta
                 noEncuestas.innerHTML = `
                     <h2>${encuesta.titulo}</h2>
@@ -239,3 +243,73 @@ document.getElementById('btnResult').addEventListener('click', function () {
     
 });
 
+
+document.addEventListener("click", function (event) {
+    if (event.target.closest(".respEncuestas")) {
+        const encuestaElement = event.target.closest(".respEncuestas");
+        const encuestaId = encuestaElement.getAttribute("data-id");
+        const encuestaTitulo = encuestaElement.querySelector("h2").innerText;
+
+        // Confirmar antes de generar el archivo
+        if (confirm(`¿Deseas descargar el Excel con las respuestas de la encuesta "${encuestaTitulo}"?`)) {
+            // Petición AJAX para obtener las respuestas
+            fetch(`../backend/generarExcel.php?id=${encuestaId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error); // Mostrar error si no hay respuestas
+                    } else {
+                        // Generar el Excel
+                        generarExcel(data, encuestaTitulo);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al obtener respuestas:", error);
+                    alert("Ocurrió un error al obtener las respuestas.");
+                });
+        }
+    }
+});
+
+// Función para generar el Excel
+function generarExcel(data, titulo) {
+    // Crear una tabla HTML con los datos
+    let contenido = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Tipo</th>
+                    <th>Respuesta</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    data.forEach((respuesta) => {
+        contenido += `
+            <tr>
+                <td>${respuesta.pregunta}</td>
+                <td>${respuesta.tipo}</td>
+                <td>${Array.isArray(respuesta.respuesta) ? respuesta.respuesta.join(", ") : respuesta.respuesta}</td>
+            </tr>
+        `;
+    });
+
+    contenido += `
+            </tbody>
+        </table>
+    `;
+
+    // Crear un archivo Excel usando Blob
+    const blob = new Blob([contenido], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    // Crear un enlace de descarga
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${titulo.replace(/ /g, "_")}_Respuestas.xlsx`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
