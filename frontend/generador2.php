@@ -87,6 +87,21 @@ if(isset($_GET['token'])){
 
 
 <script src="../scripts/scriptGenerarEncuesta.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+
+    // Verificar y aplicar el estado de modo oscuro desde localStorage
+    const darkMode = localStorage.getItem("darkMode") === "enabled"; // Cambiar comparación
+    console.log(darkMode); // Mostrará true o false según el estado real
+    if (darkMode) {
+        body.classList.add("darkmode"); // Usa la clase que ya tienes
+    }
+    });
+
+
+
+</script>
 
 
 </body>

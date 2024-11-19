@@ -125,3 +125,67 @@ body {
     }
 
 }
+
+
+/* Estilo general para modo oscuro */
+body.darkmode {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+}
+
+/* Barra superior en modo oscuro */
+body.darkmode #bar {
+    background-color: #3c3c3c;
+    border-bottom: 3px solid #555;
+}
+
+body.darkmode .small-menu span {
+    color: #f5f5f5;
+}
+
+body.darkmode .small-menu:hover {
+    background-color: #555;
+}
+
+/* Encabezado */
+body.darkmode .encabezado {
+    background-color: white;
+    color: black;
+}
+
+body.darkmode .encabezado:hover {
+    border-left-color: #4b6cb7;
+}
+
+/* Descripción y título de encuesta */
+body.darkmode .surveyTitle,
+body.darkmode .surveyDescription {
+    background-color: white;
+    color: black;
+}
+
+/* Sección de preguntas */
+body.darkmode .questions {
+    background-color: white;
+    color: black;
+}
+
+/* Botones */
+body.darkmode .btnAdd button {
+    background-color: #6a0dad;
+    color: #fff;
+    border-color: #333;
+}
+
+body.darkmode .btnAdd button:hover {
+    background-color: #8e44ad;
+}
+
+/* Opciones */
+body.darkmode .inOpcion,
+body.darkmode .pregunta input,
+body.darkmode .tipoPregunta select {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #555;
+}

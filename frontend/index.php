@@ -29,6 +29,13 @@ if (isset($_GET["valor"])) {
 </head>
 
 <body>
+
+    <div class="modoOscuro">
+        <label for="darkModeToggle">Modo Oscuro</label>
+        <input style="transform: scale(1.4);" type="checkbox" id="darkModeToggle">
+    </div>
+
+
     <section class="menu-container">
         <div class="leftbar" id="sliderBar">
             <img src="iconos/user-icon.svg" alt="">
@@ -64,6 +71,31 @@ if (isset($_GET["valor"])) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="scripts/scriptMenu.js"></script>
+
+    <script>
+    // Alterna entre modo claro y oscuro
+    function toggleDarkMode() {
+        document.body.classList.toggle('darkmode'); // Cambia la clase al body
+        const isDarkMode = document.body.classList.contains('darkmode');
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled'); // Guarda el estado
+    }
+
+    // Al cargar la página, aplica el modo oscuro si está activado
+    document.addEventListener('DOMContentLoaded', () => {
+        const darkMode = localStorage.getItem('darkMode');
+        if (darkMode === 'enabled') {
+            document.body.classList.add('darkmode');
+            const oscurito = document.getElementById('darkModeToggle');
+            oscurito.checked = true;
+        }
+    });
+
+    // Añade el evento al botón para alternar el modo
+    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+</script>
+
+
+
 </body>
 
 </html>
