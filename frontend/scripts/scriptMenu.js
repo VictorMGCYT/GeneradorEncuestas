@@ -244,22 +244,50 @@ document.getElementById('btnResult').addEventListener('click', function () {
 });
 
 
+function generarExcel(data, encuestaTitulo) {
+    try {
+        const rows = [["ID", "Respuesta", "Fecha de Creación"]]; // Encabezados
+
+        data.forEach(({ id, respuesta, fecha_creacion }) => {
+            let respuestasFormateadas = respuesta;
+            try {
+                const decoded = JSON.parse(respuesta);
+                if (Array.isArray(decoded)) {
+                    respuestasFormateadas = decoded.join(", ");
+                }
+            } catch (e) {
+                // Si no es JSON válido, mantener el texto original
+            }
+            rows.push([id, respuestasFormateadas, fecha_creacion]);
+        });
+
+        const worksheet = XLSX.utils.aoa_to_sheet(rows);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Respuestas");
+
+        const fileName = `Respuestas_Encuesta_${encuestaTitulo.replace(/[^a-zA-Z0-9]/g, "_")}.xlsx`;
+        XLSX.writeFile(workbook, fileName);
+
+        alert("Archivo Excel generado correctamente.");
+    } catch (error) {
+        console.error("Error al generar el Excel:", error);
+        alert("Hubo un error al procesar las respuestas.");
+    }
+}
+
 document.addEventListener("click", function (event) {
     if (event.target.closest(".respEncuestas")) {
         const encuestaElement = event.target.closest(".respEncuestas");
         const encuestaId = encuestaElement.getAttribute("data-id");
         const encuestaTitulo = encuestaElement.querySelector("h2").innerText;
 
-        // Confirmar antes de generar el archivo
         if (confirm(`¿Deseas descargar el Excel con las respuestas de la encuesta "${encuestaTitulo}"?`)) {
-            // Petición AJAX para obtener las respuestas
-            fetch(`../backend/generarExcel.php?id=${encuestaId}`)
+            fetch(`../backend/generarExcel.php?encuesta_id=${encuestaId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
-                        alert(data.error); // Mostrar error si no hay respuestas
+                        alert(data.error);
                     } else {
-                        // Generar el Excel
                         generarExcel(data, encuestaTitulo);
                     }
                 })
@@ -270,46 +298,3 @@ document.addEventListener("click", function (event) {
         }
     }
 });
-
-// Función para generar el Excel
-function generarExcel(data, titulo) {
-    // Crear una tabla HTML con los datos
-    let contenido = `
-        <table>
-            <thead>
-                <tr>
-                    <th>Pregunta</th>
-                    <th>Tipo</th>
-                    <th>Respuesta</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-
-    data.forEach((respuesta) => {
-        contenido += `
-            <tr>
-                <td>${respuesta.pregunta}</td>
-                <td>${respuesta.tipo}</td>
-                <td>${Array.isArray(respuesta.respuesta) ? respuesta.respuesta.join(", ") : respuesta.respuesta}</td>
-            </tr>
-        `;
-    });
-
-    contenido += `
-            </tbody>
-        </table>
-    `;
-
-    // Crear un archivo Excel usando Blob
-    const blob = new Blob([contenido], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-
-    // Crear un enlace de descarga
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${titulo.replace(/ /g, "_")}_Respuestas.xlsx`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
