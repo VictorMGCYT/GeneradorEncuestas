@@ -91,7 +91,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
         foreach ($filteredOptions as $option): 
         ?>
             <label class="txtCheckbox">
-                <input required class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
+                <input class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
                 <?php echo htmlspecialchars($option); ?>
             </label><br>
         <?php endforeach; ?>

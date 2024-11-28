@@ -246,19 +246,19 @@ document.getElementById('btnResult').addEventListener('click', function () {
 
 function generarExcel(data, encuestaTitulo) {
     try {
-        const rows = [["ID", "Respuesta", "Fecha de Creación"]]; // Encabezados
+        const rows = [
+            [`Respuestas de la Encuesta: ${encuestaTitulo}`], // Título
+            [], // Espacio en blanco
+            ["Pregunta", "Tipo de Pregunta", "Respuestas", "Número de Respuestas"] // Encabezados
+        ];
 
-        data.forEach(({ id, respuesta, fecha_creacion }) => {
-            let respuestasFormateadas = respuesta;
-            try {
-                const decoded = JSON.parse(respuesta);
-                if (Array.isArray(decoded)) {
-                    respuestasFormateadas = decoded.join(", ");
-                }
-            } catch (e) {
-                // Si no es JSON válido, mantener el texto original
-            }
-            rows.push([id, respuestasFormateadas, fecha_creacion]);
+        data.forEach(({ question, type, responses }) => {
+            rows.push([
+                question,
+                type,
+                responses.join(", "), // Respuestas separadas por comas
+                responses.length // Conteo de respuestas
+            ]);
         });
 
         const worksheet = XLSX.utils.aoa_to_sheet(rows);
@@ -274,6 +274,7 @@ function generarExcel(data, encuestaTitulo) {
         alert("Hubo un error al procesar las respuestas.");
     }
 }
+
 
 document.addEventListener("click", function (event) {
     if (event.target.closest(".respEncuestas")) {
