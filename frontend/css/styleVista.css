@@ -126,7 +126,6 @@ body {
 
 }
 
-
 /* Estilo general para modo oscuro */
 body.darkmode {
     background-color: #2c2c2c;
@@ -147,45 +146,119 @@ body.darkmode .small-menu:hover {
     background-color: #555;
 }
 
-/* Encabezado */
+/* Encabezado en modo oscuro */
 body.darkmode .encabezado {
-    background-color: white;
-    color: black;
+    background-color: #3c3c3c; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+    border-top-color: #7c6acb; /* Morado vibrante */
+    border-left-color: #5a5a6a; /* Gris intermedio */
 }
 
 body.darkmode .encabezado:hover {
-    border-left-color: #4b6cb7;
+    border-left-color: #9889d8; /* Morado pastel */
 }
 
-/* Descripción y título de encuesta */
+/* Título y descripción de encuesta en modo oscuro */
 body.darkmode .surveyTitle,
 body.darkmode .surveyDescription {
-    background-color: white;
-    color: black;
+    background-color: #4a4a4a;
+    color: #ffffff;
 }
 
-/* Sección de preguntas */
+/* Sección de preguntas en modo oscuro */
 body.darkmode .questions {
-    background-color: white;
-    color: black;
+    background-color: #3c3c3c;
+    color: #f5f5f5;
+    border-left-color: #6c6c7e;
 }
 
-/* Botones */
-body.darkmode .btnAdd button {
-    background-color: #6a0dad;
-    color: #fff;
-    border-color: #333;
-}
-
-body.darkmode .btnAdd button:hover {
-    background-color: #8e44ad;
-}
-
-/* Opciones */
+/* Opciones, inputs y selects en modo oscuro */
 body.darkmode .inOpcion,
 body.darkmode .pregunta input,
 body.darkmode .tipoPregunta select {
-    background-color: #333;
+    background-color: #444;
     color: #f5f5f5;
     border-color: #555;
 }
+
+/* Botón dentro de btnAdd en modo oscuro */
+body.darkmode .btnAdd {
+    background-color: #2b2b3c; /* Fondo gris oscuro */
+    border-left-color: #6c6c7e; /* Bordes grises claros */
+    color: #f0f0f0; /* Texto claro */
+}
+
+body.darkmode .btnAdd button {
+    background-color: #7c6acb; /* Morado vibrante */
+    color: #ffffff; /* Texto blanco */
+    border-color: #8d8dad; /* Bordes claros */
+}
+
+body.darkmode .btnAdd button:hover {
+    background-color: #9889d8; /* Morado pastel */
+}
+
+/* Tooltips en modo oscuro */
+body.darkmode .tooltip {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Hover en tooltips */
+body.darkmode .menu button:hover span.tooltip {
+    background-color: #666;
+    color: #f0f0f0;
+}
+
+/* Modo oscuro para la sección 2 de preguntas */
+
+/* Contenedor de la sección */
+body.darkmode .sec2 {
+    background-color: #2c2c2c; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+}
+
+/* Contenedor de las preguntas */
+body.darkmode .cuerpo {
+    background-color: #3c3c3c; /* Fondo gris oscuro */
+    border-left-color: #6c6c7e; /* Bordes grises claros */
+    color: #f5f5f5; /* Texto claro */
+}
+
+/* Estilos para las preguntas en modo oscuro */
+body.darkmode .abierta {
+    background-color: #444; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+    border-color: #555; /* Bordes más oscuros */
+}
+
+body.darkmode .txtradioBtn,
+body.darkmode .txtCheckbox {
+    color: #f5f5f5; /* Texto claro */
+}
+
+/* Radio buttons en modo oscuro */
+body.darkmode .radioBtn {
+    background-color: #555; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+    border: 1px solid #666; /* Bordes oscuros */
+}
+
+/* Checkboxes en modo oscuro */
+body.darkmode .checkbox {
+    background-color: #555; /* Fondo oscuro */
+    border: 1px solid #666; /* Bordes oscuros */
+}
+
+/* Botón de enviar en modo oscuro */
+body.darkmode .btnEnviar {
+    background-color: #7c6acb; /* Morado vibrante */
+    color: #ffffff; /* Texto blanco */
+    border-color: #8d8dad; /* Bordes claros */
+}
+
+body.darkmode .btnEnviar:hover {
+    background-color: #9889d8; /* Morado pastel */
+    cursor: pointer;
+}
+

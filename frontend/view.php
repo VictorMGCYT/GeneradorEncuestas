@@ -66,7 +66,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     <h3><?php echo htmlspecialchars($question['text']); ?></h3>
     
     <?php if ($question['type'] === 'abierta'): ?>
-        <input class="abierta" type="text" name="respuestas[<?php echo $index; ?>]" placeholder="Tu respuesta">
+        <input required class="abierta" type="text" name="respuestas[<?php echo $index; ?>]" placeholder="Tu respuesta">
     
     <?php elseif ($question['type'] === 'multiple'): ?>
         <?php 
@@ -77,7 +77,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
         foreach ($filteredOptions as $option): 
         ?>
             <label class="txtradioBtn">
-                <input class="radioBtn" type="radio" name="respuestas[<?php echo $index; ?>]" value="<?php echo htmlspecialchars($option); ?>">
+                <input required class="radioBtn" type="radio" name="respuestas[<?php echo $index; ?>]" value="<?php echo htmlspecialchars($option); ?>">
                 <?php echo htmlspecialchars($option); ?>
             </label><br>
         <?php endforeach; ?>
@@ -91,7 +91,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
         foreach ($filteredOptions as $option): 
         ?>
             <label class="txtCheckbox">
-                <input class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
+                <input required class="checkbox" type="checkbox" name="respuestas[<?php echo $index; ?>][]" value="<?php echo htmlspecialchars($option); ?>">
                 <?php echo htmlspecialchars($option); ?>
             </label><br>
         <?php endforeach; ?>
